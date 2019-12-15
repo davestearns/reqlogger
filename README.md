@@ -62,3 +62,22 @@ func main() {
 	http.ListenAndServe(":8080", wrappedMux)
 }
 ```
+
+Example logging output:
+
+```json
+{"level":"info","time":"2019-12-14T18:24:48-08:00","message":"server is listening at 127.0.0.1:8080"}
+{"level":"info","duration":0.008072,"status":200,"bytes":13,"headers":{"user-agent":"PostmanRuntime/7.20.1"},"time":"2019-12-14T18:24:56-08:00","message":"GET /"}
+{"level":"info","duration":0.005631,"status":200,"bytes":13,"headers":{"user-agent":"PostmanRuntime/7.20.1"},"time":"2019-12-14T18:24:57-08:00","message":"GET /"}
+{"level":"info","duration":0.027207,"status":200,"bytes":13,"headers":{"user-agent":"PostmanRuntime/7.20.1"},"time":"2019-12-14T18:25:00-08:00","message":"GET /"}
+```
+
+## Request Headers
+
+By default the following request headers will be logged if they are non-zero length:
+
+- `user-agent`
+- `x-request-id`
+- `x-api-key`
+
+You can alter this list using either the `.AddHeader()` method or the `.SetHeaders()` method.

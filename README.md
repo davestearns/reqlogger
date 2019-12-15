@@ -1,5 +1,6 @@
 # Request Logger
 
+[![Build Status](https://travis-ci.org/davestearns/reqlogger.svg?branch=master)](https://travis-ci.org/davestearns/reqlogger)
 [![GoDoc](https://godoc.org/github.com/davestearns/reqlogger?status.png)](https://godoc.org/github.com/davestearns/reqlogger)
 
 This package provides an HTTP request logging middleware handler that logs all requests using the popular and efficient [zerolog](https://github.com/rs/zerolog) package.

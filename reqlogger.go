@@ -16,12 +16,12 @@ type RequestLogger struct {
 	reqHeaders []string
 }
 
-// NewRequestLogger constructs a new RequestLogger middleware handler that wraps the
+// New constructs a new RequestLogger middleware handler that wraps the
 // provided `handler` to write a log message at the end of each requesting using the
 // provided `logger` instance. By default, it will include the values for the following
 // request headers (if present): user-agent, x-request-id, and x-api-key.
 // To adjust this list, use the AddHeader() or SetHeaders() methods.
-func NewRequestLogger(handler http.Handler, logger zerolog.Logger) *RequestLogger {
+func New(handler http.Handler, logger zerolog.Logger) *RequestLogger {
 	return &RequestLogger{
 		handler: handler,
 		logger:  logger,

@@ -14,20 +14,20 @@ import (
 )
 
 func TestDefaultReqHeaders(t *testing.T) {
-	rl := NewRequestLogger(http.NewServeMux(), zerolog.New(ioutil.Discard))
+	rl := New(http.NewServeMux(), zerolog.New(ioutil.Discard))
 	expected := []string{"user-agent", "x-api-key", "x-request-id"}
 	assert.ElementsMatch(t, expected, rl.reqHeaders)
 }
 
 func TestAddHeader(t *testing.T) {
-	rl := NewRequestLogger(http.NewServeMux(), zerolog.New(ioutil.Discard))
+	rl := New(http.NewServeMux(), zerolog.New(ioutil.Discard))
 	rl.AddHeader("x-foo")
 	expected := []string{"user-agent", "x-api-key", "x-request-id", "x-foo"}
 	assert.ElementsMatch(t, expected, rl.reqHeaders)
 }
 
 func TestSetHeaders(t *testing.T) {
-	rl := NewRequestLogger(http.NewServeMux(), zerolog.New(ioutil.Discard))
+	rl := New(http.NewServeMux(), zerolog.New(ioutil.Discard))
 	expected := []string{"x-foo"}
 	rl.SetHeaders(expected)
 	assert.ElementsMatch(t, expected, rl.reqHeaders)
@@ -45,7 +45,7 @@ func TestLogsRequest(t *testing.T) {
 	r.Header.Add("x-request-id", "test-request-id")
 	r.Header.Add("x-foo", "bar")
 
-	rl := NewRequestLogger(http.HandlerFunc(handler), zerolog.New(buf))
+	rl := New(http.HandlerFunc(handler), zerolog.New(buf))
 	rl.AddHeader("x-foo")
 	rl.ServeHTTP(httptest.NewRecorder(), r)
 

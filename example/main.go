@@ -1,18 +1,3 @@
-# Request Logger
-
-This package provides an HTTP request logging middleware handler that logs all requests using the popular and efficient [zerolog](https://github.com/rs/zerolog) package.
-
-# Installation
-
-```bash
-go get -u github.com/davestearns/reqlogger
-```
-
-# Usage
-
-See the `example/` subdirectory for a complete example. 
-
-```go
 package main
 
 import (
@@ -61,4 +46,3 @@ func main() {
 	logger.Info().Msgf("server is listening at %s", addr)
 	http.ListenAndServe(":8080", wrappedMux)
 }
-```
